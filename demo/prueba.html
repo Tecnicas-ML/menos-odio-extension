@@ -1,0 +1,101 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Prueba · Menos odio a la vista</title>
+  <style>
+    :root { --bg:#f7f7f8; --card:#fff; --fg:#1d1d1f; --muted:#6b6b70; --line:#e4e4e8; --accent:#c62828; }
+    * { box-sizing: border-box; }
+    body { margin:0; background:var(--bg); color:var(--fg); font:15px/1.5 system-ui,-apple-system,"Segoe UI",Roboto,sans-serif; }
+    main { max-width:720px; margin:0 auto; padding:24px 16px 64px; }
+    h1 { font-size:22px; margin:0 0 4px; }
+    .lead { color:var(--muted); margin:0 0 20px; }
+    .note { background:#fff8e1; border:1px solid #f1d58a; border-radius:10px; padding:10px 14px; font-size:13px; margin-bottom:20px; }
+    .note code { background:#fff; padding:1px 4px; border-radius:4px; }
+    form { background:var(--card); border:1px solid var(--line); border-radius:12px; padding:14px; margin-bottom:20px; }
+    textarea { width:100%; min-height:70px; border:1px solid var(--line); border-radius:8px; padding:8px; font:inherit; resize:vertical; }
+    .row { display:flex; gap:8px; margin-top:8px; flex-wrap:wrap; }
+    button { font:inherit; border:0; border-radius:8px; padding:7px 14px; cursor:pointer; background:var(--fg); color:#fff; }
+    button.sec { background:var(--line); color:var(--fg); }
+    h2 { font-size:15px; margin:24px 0 8px; color:var(--muted); text-transform:uppercase; letter-spacing:.04em; }
+    .comments { background:var(--card); border:1px solid var(--line); border-radius:12px; }
+    .comment { padding:12px 14px; border-top:1px solid var(--line); }
+    .comment:first-child { border-top:0; }
+    .who { font-weight:600; font-size:13px; }
+    .tag { font-size:11px; color:var(--muted); font-weight:400; margin-left:6px; }
+    .body { margin-top:2px; }
+  </style>
+</head>
+<body>
+<main>
+  <h1>Página de prueba</h1>
+  <p class="lead">Simula una sección de comentarios. Nada de lo que escribas aquí se publica ni sale de tu computador: solo se agrega a esta página.</p>
+
+  <div class="note">
+    Necesitás el servidor corriendo (<code>python server/server.py</code>) y la extensión con el <b>modo genérico</b> activo.
+    Si abrís este archivo con doble clic (<code>file://</code>), activá <i>Permitir acceso a URLs de archivos</i> en los detalles de la extensión.
+    <br><b>Aviso:</b> incluye ejemplos de lenguaje ofensivo (los mismos casos de prueba del proyecto).
+  </div>
+
+  <form id="f">
+    <textarea id="t" placeholder="Escribí un comentario de prueba…" maxlength="1000"></textarea>
+    <div class="row">
+      <button type="submit">Agregar comentario</button>
+      <button type="button" class="sec" id="reset">Restablecer ejemplos</button>
+    </div>
+  </form>
+
+  <h2>Comentarios</h2>
+  <div class="comments" id="list"></div>
+</main>
+
+<script>
+  // Casos de prueba: limpios, ofensivos y difíciles (contra-discurso, crítica dura, ironía)
+  const EJEMPLOS = [
+    ["Camila", "limpio", "Qué buena nota, gracias por explicar el tema con claridad."],
+    ["Andrés", "limpio", "No estoy de acuerdo con la medida, me parece injusta."],
+    ["Lucía", "ofensivo", "Ojalá desaparezcan todos esos negros de mierda de una vez."],
+    ["Mateo", "ofensivo", "Hay que echar a todos los inmigrantes del país ya."],
+    ["Sofía", "difícil · contra-discurso", "No odio a nadie: rechazo las ideas, no a las personas."],
+    ["Julián", "difícil · crítica dura", "Estos políticos son unos ladrones, que se vayan todos."],
+    ["Valentina", "difícil · cita", "Es terrible que todavía haya gente que diga que los inmigrantes son una plaga."],
+    ["Diego", "limpio · emoji", "Jajaja qué video tan bueno 😂 saludos desde Bogotá"],
+    ["Paula", "limpio · inglés", "Great video, thanks for sharing!"],
+  ];
+
+  const list = document.getElementById("list");
+
+  function add(who, tag, text, top = false) {
+    const c = document.createElement("div");
+    c.className = "comment";
+    c.innerHTML = '<div class="who"></div><div class="body"></div>';
+    c.querySelector(".who").textContent = who;
+    if (tag) {
+      const s = document.createElement("span");
+      s.className = "tag";
+      s.textContent = tag;
+      c.querySelector(".who").append(s);
+    }
+    c.querySelector(".body").textContent = text;
+    top ? list.prepend(c) : list.append(c);
+  }
+
+  function seed() {
+    list.innerHTML = "";
+    EJEMPLOS.forEach(([w, t, x]) => add(w, t, x));
+  }
+
+  document.getElementById("f").addEventListener("submit", (e) => {
+    e.preventDefault();
+    const t = document.getElementById("t");
+    const text = t.value.trim();
+    if (!text) return;
+    add("Vos", "agregado ahora", text, true);
+    t.value = "";
+  });
+  document.getElementById("reset").onclick = seed;
+  seed();
+</script>
+</body>
+</html>

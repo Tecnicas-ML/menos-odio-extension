@@ -1,0 +1,64 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8" />
+  <title>Menos odio a la vista</title>
+  <link rel="stylesheet" href="popup.css" />
+</head>
+<body>
+  <header>
+    <img src="icons/icon32.png" alt="" width="24" height="24" />
+    <div>
+      <h1>Menos odio a la vista</h1>
+      <p class="sub">Modelo A3 · RoBERTuito</p>
+    </div>
+    <label class="switch" title="Activar / desactivar">
+      <input type="checkbox" id="enabled" />
+      <span></span>
+    </label>
+  </header>
+
+  <section class="stats">
+    <div><strong id="flagged">–</strong><span>ocultos</span></div>
+    <div><strong id="analyzed">–</strong><span>analizados</span></div>
+    <div class="site"><strong id="site">–</strong><span id="host"></span></div>
+  </section>
+
+  <section>
+    <label class="row">
+      <span>Umbral <b id="thrVal"></b></span>
+      <input type="range" id="threshold" min="0.05" max="0.95" step="0.01" />
+    </label>
+    <p class="hint">0,28 = umbral elegido en DEV (F1 odio test ≈ 0,653). Más alto → oculta menos.</p>
+
+    <label class="row">
+      <span>Acción</span>
+      <select id="mode">
+        <option value="blur">Difuminar</option>
+        <option value="hide">Ocultar</option>
+      </select>
+    </label>
+    <label class="check"><input type="checkbox" id="showAllScores" /> Mostrar puntaje en todos los comentarios</label>
+    <label class="check"><input type="checkbox" id="genericMode" /> Modo genérico (periódicos y blogs)</label>
+    <label class="check"><input type="checkbox" id="pauseHere" /> Pausar en este sitio</label>
+  </section>
+
+  <section>
+    <label class="row">
+      <span>Backend</span>
+      <select id="backend">
+        <option value="local">Servidor local (recomendado)</option>
+        <option value="space">Space de Hugging Face</option>
+      </select>
+    </label>
+    <label class="row" id="serverRow">
+      <span>URL</span>
+      <input type="text" id="serverUrl" spellcheck="false" />
+    </label>
+    <p id="status" class="status">Comprobando…</p>
+  </section>
+
+  <footer>No sustituye moderación humana · solo español · puede fallar fuera de dominio.</footer>
+  <script src="popup.js"></script>
+</body>
+</html>

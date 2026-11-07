@@ -1,0 +1,64 @@
+:root {
+  --bg: #ffffff;
+  --fg: #1d1d1f;
+  --muted: #6b6b70;
+  --line: #e6e6ea;
+  --accent: #c62828;
+  --ok: #1d6b3a;
+  --card: #f6f6f8;
+}
+@media (prefers-color-scheme: dark) {
+  :root {
+    --bg: #1c1c1f;
+    --fg: #f2f2f4;
+    --muted: #a0a0a8;
+    --line: #34343a;
+    --card: #26262b;
+    --ok: #7fd6a0;
+  }
+}
+* { box-sizing: border-box; }
+body {
+  width: 320px;
+  margin: 0;
+  background: var(--bg);
+  color: var(--fg);
+  font: 13px/1.4 system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+}
+header {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 12px 14px;
+  border-bottom: 1px solid var(--line);
+}
+header div { flex: 1; }
+h1 { font-size: 14px; margin: 0; }
+.sub { margin: 0; color: var(--muted); font-size: 11px; }
+section { padding: 10px 14px; border-bottom: 1px solid var(--line); }
+.stats { display: grid; grid-template-columns: 1fr 1fr 1.4fr; gap: 6px; }
+.stats div { background: var(--card); border-radius: 8px; padding: 6px 8px; display: flex; flex-direction: column; min-width: 0; }
+.stats strong { font-size: 16px; font-variant-numeric: tabular-nums; }
+.stats #flagged { color: var(--accent); }
+.stats .site strong { font-size: 12px; }
+.stats span { color: var(--muted); font-size: 11px; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+.row { display: flex; align-items: center; justify-content: space-between; gap: 8px; margin: 6px 0; }
+.row input[type="range"] { flex: 1; max-width: 170px; accent-color: var(--accent); }
+.row input[type="text"], select {
+  flex: 1; max-width: 190px; padding: 4px 6px; border-radius: 6px;
+  border: 1px solid var(--line); background: var(--card); color: var(--fg); font: inherit;
+}
+.check { display: flex; align-items: center; gap: 6px; margin: 6px 0; }
+.check input { accent-color: var(--accent); }
+.hint { margin: 0 0 6px; color: var(--muted); font-size: 11px; }
+.status { margin: 6px 0 0; font-size: 12px; }
+.status.ok { color: var(--ok); }
+.status.err { color: var(--accent); }
+.status code { font-size: 11px; background: var(--card); padding: 1px 4px; border-radius: 4px; }
+footer { padding: 8px 14px 12px; color: var(--muted); font-size: 11px; }
+.switch { position: relative; width: 36px; height: 20px; }
+.switch input { opacity: 0; width: 0; height: 0; }
+.switch span { position: absolute; inset: 0; background: var(--line); border-radius: 999px; cursor: pointer; transition: 0.15s; }
+.switch span::before { content: ""; position: absolute; width: 16px; height: 16px; left: 2px; top: 2px; background: #fff; border-radius: 50%; transition: 0.15s; }
+.switch input:checked + span { background: var(--accent); }
+.switch input:checked + span::before { transform: translateX(16px); }

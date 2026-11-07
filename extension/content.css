@@ -1,0 +1,75 @@
+/* Estilos inyectados en las páginas. Prefijo mov- para no chocar con el sitio. */
+
+[data-mov-flag="1"][data-mov-mode="blur"]:not([data-mov-revealed]) {
+  filter: blur(6px) !important;
+  user-select: none !important;
+  pointer-events: none !important;
+  transition: filter 0.15s ease;
+}
+
+[data-mov-flag="1"][data-mov-mode="hide"]:not([data-mov-revealed]) {
+  display: none !important;
+}
+
+mov-badge {
+  all: initial;
+  display: inline-flex !important;
+  align-items: center;
+  gap: 6px;
+  margin: 2px 6px 2px 0;
+  padding: 2px 4px 2px 2px;
+  border-radius: 999px;
+  font: 600 11px/1.4 system-ui, -apple-system, "Segoe UI", Roboto, sans-serif !important;
+  vertical-align: middle;
+  cursor: default;
+  white-space: nowrap;
+  max-width: 100%;
+}
+
+mov-badge.mov-bad {
+  background: #fde8e8;
+  color: #8a1c1c;
+  border: 1px solid #f3b4b4;
+}
+
+mov-badge.mov-ok {
+  padding: 1px 6px;
+  background: #e7f6ec;
+  color: #1d6b3a;
+  border: 1px solid #b8e2c6;
+  font-weight: 500 !important;
+  opacity: 0.85;
+}
+
+mov-badge .mov-score {
+  all: unset;
+  background: #c62828;
+  color: #fff;
+  border-radius: 999px;
+  padding: 0 7px;
+  font: inherit;
+}
+
+mov-badge .mov-label {
+  all: unset;
+  font: inherit;
+  font-weight: 500;
+}
+
+mov-badge button {
+  all: unset;
+  cursor: pointer;
+  font: inherit;
+  padding: 0 8px;
+  border-radius: 999px;
+  background: #fff;
+  color: #8a1c1c;
+  border: 1px solid #f3b4b4;
+}
+
+mov-badge button:hover {
+  background: #fff5f5;
+}
+
+/* Sin @media dark: el tema del sistema no dice nada del tema de la página
+   (p. ej. YouTube oscuro con sistema claro). Los colores fijos se leen en ambos. */

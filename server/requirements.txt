@@ -1,0 +1,9 @@
+torch
+transformers>=4.40.0
+fastapi
+uvicorn
+emoji
+sentencepiece
+protobuf
+# pysentimiento se instala aparte con --no-deps (solo usamos su preprocesado):
+#   pip install --no-deps pysentimiento

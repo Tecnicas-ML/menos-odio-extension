@@ -1,0 +1,17 @@
+# Entorno Python
+.venv/
+__pycache__/
+*.pyc
+
+# Pesos del modelo (se descargan del Hub o se copian del cuaderno)
+a3_model/
+a3_metrics.json
+*.safetensors
+
+# Empaquetados de la extensión
+*.crx
+*.pem
+*.zip
+
+.DS_Store
+Thumbs.db
