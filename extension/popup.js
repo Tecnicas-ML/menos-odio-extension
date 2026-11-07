@@ -48,7 +48,7 @@ async function checkHealth() {
     el.className = "status err";
     el.innerHTML =
       h?.backend === "local"
-        ? "● Servidor apagado. Ejecutá <code>python server/server.py</code>"
+        ? "● Servidor apagado. Ejecuta <code>python server/server.py</code>"
         : `● Space no disponible (${h?.error || "error"})`;
   }
 }

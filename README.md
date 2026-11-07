@@ -23,9 +23,9 @@ pip install --no-deps pysentimiento
 python server/server.py
 ```
 
-La primera vez descarga los pesos del Hub (~500 MB). Si copiás la carpeta `a3_model/` que genera el cuaderno a la raíz de este repo (o definís `HF_MODEL_ID=ruta`), usa esos pesos locales. Queda escuchando en `http://127.0.0.1:8765`.
+La primera vez descarga los pesos del Hub (~500 MB). Si copias la carpeta `a3_model/` que genera el cuaderno a la raíz de este repo (o defines `HF_MODEL_ID=ruta`), usa esos pesos locales. Queda escuchando en `http://127.0.0.1:8765`.
 
-Prueba rápida: abrí `http://127.0.0.1:8765/health`.
+Prueba rápida: abre `http://127.0.0.1:8765/health`.
 
 ## 2. Instalar la extensión (modo desarrollador)
 
@@ -33,7 +33,7 @@ Prueba rápida: abrí `http://127.0.0.1:8765/health`.
 
 **Opera:** `opera://extensions` → *Modo desarrollador* → *Cargar desempaquetada* → `extension/`. Opera usa Chromium y acepta extensiones Manifest V3 de Chrome.
 
-> Para probar en páginas abiertas como archivo (`file://`), por ejemplo el blog LA PLAZA del proyecto, activá *Permitir acceso a URLs de archivos* en los detalles de la extensión.
+> Para probar en páginas abiertas como archivo (`file://`), por ejemplo el blog LA PLAZA del proyecto, activa *Permitir acceso a URLs de archivos* en los detalles de la extensión.
 
 ## 3. Uso
 
@@ -43,17 +43,17 @@ Prueba rápida: abrí `http://127.0.0.1:8765/health`.
 
 ## 4. Cómo probarla sin publicar nada
 
-**Página de prueba local.** Abrí [`demo/prueba.html`](demo/prueba.html), ya sea con doble clic (con *Permitir acceso a URLs de archivos* activado) o con `python -m http.server` y `http://127.0.0.1:8000/demo/prueba.html`. Trae casos limpios, ofensivos y difíciles (contra-discurso, crítica dura, cita) y una caja para agregar tus propios comentarios. Todo queda solo en esa página.
+**Página de prueba local.** Abre [`demo/prueba.html`](demo/prueba.html), ya sea con doble clic (con *Permitir acceso a URLs de archivos* activado) o con `python -m http.server` y `http://127.0.0.1:8000/demo/prueba.html`. Trae casos limpios, ofensivos y difíciles (contra-discurso, crítica dura, cita) y una caja para agregar tus propios comentarios. Todo queda solo en esa página.
 
 **Sitios reales, editando solo tu copia local.** En YouTube, Instagram, Facebook o el sitio que sea:
 
 1. Clic derecho sobre el texto de un comentario → **Inspeccionar**.
-2. En el panel *Elements*, doble clic sobre el texto del nodo y reemplazalo por un comentario de prueba. Enter.
+2. En el panel *Elements*, doble clic sobre el texto del nodo y reemplázalo por un comentario de prueba. Enter.
 3. La extensión detecta el cambio y lo vuelve a puntuar en ~1 s.
 
 Así se verifican los selectores del sitio real sin escribir nada en la plataforma. Al recargar la página, todo vuelve a la normalidad.
 
-**Activando "Mostrar puntaje en todos los comentarios"** en el popup también podés ver cómo puntúa el modelo los comentarios reales que ya existen, sin escribir nada.
+**Activando "Mostrar puntaje en todos los comentarios"** en el popup también puedes ver cómo puntúa el modelo los comentarios reales que ya existen, sin escribir nada.
 
 ## Sitios soportados
 

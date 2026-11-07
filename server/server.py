@@ -33,8 +33,8 @@ ROOT = Path(__file__).resolve().parent
 REPO = ROOT.parent
 
 # --- Modelo: HF_MODEL_ID (ruta o id del Hub) > a3_model/ local > Hub ---
-# Para usar los pesos que genera el notebook, copiá su carpeta a3_model/ a la raíz
-# de este repo o apuntá HF_MODEL_ID a ella.
+# Para usar los pesos que genera el notebook, copia su carpeta a3_model/ a la raíz
+# de este repo o apunta HF_MODEL_ID a ella.
 LOCAL_CANDIDATES = [REPO / "a3_model", ROOT / "a3_model"]
 MODEL_ID = os.environ.get("HF_MODEL_ID") or next(
     (str(p) for p in LOCAL_CANDIDATES if (p / "config.json").exists()),
@@ -69,7 +69,7 @@ def _load_preprocess():
         return mod.preprocess_tweet
     except Exception as exc:  # pragma: no cover
         raise SystemExit(
-            "No se encontró pysentimiento. Instalá: pip install --no-deps pysentimiento emoji"
+            "No se encontró pysentimiento. Instala: pip install --no-deps pysentimiento emoji"
         ) from exc
 
 

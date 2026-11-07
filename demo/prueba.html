@@ -33,13 +33,13 @@
   <p class="lead">Simula una sección de comentarios. Nada de lo que escribas aquí se publica ni sale de tu computador: solo se agrega a esta página.</p>
 
   <div class="note">
-    Necesitás el servidor corriendo (<code>python server/server.py</code>) y la extensión con el <b>modo genérico</b> activo.
-    Si abrís este archivo con doble clic (<code>file://</code>), activá <i>Permitir acceso a URLs de archivos</i> en los detalles de la extensión.
+    Necesitas el servidor corriendo (<code>python server/server.py</code>) y la extensión con el <b>modo genérico</b> activo.
+    Si abres este archivo con doble clic (<code>file://</code>), activa <i>Permitir acceso a URLs de archivos</i> en los detalles de la extensión.
     <br><b>Aviso:</b> incluye ejemplos de lenguaje ofensivo (los mismos casos de prueba del proyecto).
   </div>
 
   <form id="f">
-    <textarea id="t" placeholder="Escribí un comentario de prueba…" maxlength="1000"></textarea>
+    <textarea id="t" placeholder="Escribe un comentario de prueba…" maxlength="1000"></textarea>
     <div class="row">
       <button type="submit">Agregar comentario</button>
       <button type="button" class="sec" id="reset">Restablecer ejemplos</button>
@@ -91,7 +91,7 @@
     const t = document.getElementById("t");
     const text = t.value.trim();
     if (!text) return;
-    add("Vos", "agregado ahora", text, true);
+    add("Tú", "agregado ahora", text, true);
     t.value = "";
   });
   document.getElementById("reset").onclick = seed;
