@@ -15,3 +15,6 @@ a3_metrics.json
 
 .DS_Store
 Thumbs.db
+
+# Pesos locales del modelo v5 (~400 MB; se descargan del Hub)
+modelo_v5/
