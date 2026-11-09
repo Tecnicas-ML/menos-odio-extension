@@ -1,12 +1,23 @@
 // Service worker: recibe lotes de textos de los content scripts, llama al
-// backend del modelo A3 y devuelve probabilidades. Mantiene una caché en memoria.
+// backend del modelo v5 y devuelve probabilidades. Mantiene una caché en memoria.
 
 const DEFAULTS = {
   backend: "local", // "local" (server.py) | "space" (Gradio en Hugging Face)
   serverUrl: "http://127.0.0.1:8765",
   spaceUrl: "https://tatisvivass-menos-odio-a-la-vista.hf.space",
-  threshold: 0.28,
+  threshold: 0.5, // puntaje combinado v5: 0.5 = umbral de DEV_EVAL de cada cabeza (insulto / odio grupal)
 };
+
+// Migración A3 -> v5: el umbral 0.28 guardado por la versión anterior no aplica al puntaje v5.
+async function migrate() {
+  const { modelVersion } = await chrome.storage.sync.get({ modelVersion: null });
+  if (modelVersion !== "v5") {
+    await chrome.storage.sync.set({ modelVersion: "v5", threshold: DEFAULTS.threshold });
+    cache.clear();
+  }
+}
+chrome.runtime.onInstalled.addListener(migrate);
+chrome.runtime.onStartup.addListener(migrate);
 
 const cache = new Map(); // `${backend}|${text}` -> prob
 const CACHE_MAX = 5000;

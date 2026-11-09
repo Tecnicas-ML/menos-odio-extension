@@ -3,7 +3,7 @@
   "name": "Menos odio a la vista",
   "short_name": "Menos odio",
   "version": "0.1.0",
-  "description": "Oculta comentarios con odio en español usando el modelo A3 (RoBERTuito) del proyecto. Muestra el puntaje del modelo.",
+  "description": "Oculta comentarios con odio en español usando el modelo v5 multitarea (RoBERTuito) del proyecto. Muestra el puntaje del modelo.",
   "minimum_chrome_version": "110",
   "icons": {
     "16": "icons/icon16.png",

@@ -3,6 +3,9 @@ transformers>=4.40.0
 fastapi
 uvicorn
 emoji
+numpy
+pandas
+huggingface_hub
 sentencepiece
 protobuf
 # pysentimiento se instala aparte con --no-deps (solo usamos su preprocesado):

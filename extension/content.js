@@ -7,7 +7,7 @@
 
   const DEFAULTS = {
     enabled: true,
-    threshold: 0.28, // umbral elegido en DEV en el notebook
+    threshold: 0.5, // puntaje combinado v5 (0.5 = umbral de DEV_EVAL por cabeza)
     mode: "blur", // "blur" | "hide"
     showAllScores: false, // también mostrar puntaje en comentarios no ofensivos
     genericMode: true, // heurística para periódicos/blogs
@@ -174,7 +174,7 @@
       const score = document.createElement("span");
       score.className = "mov-score";
       score.textContent = pct(st.prob);
-      score.title = `Probabilidad de odio según el modelo A3: ${st.prob.toFixed(3)} (umbral ${S.threshold.toFixed(2)})`;
+      score.title = `Probabilidad de odio según el modelo v5 (insulto / odio grupal): ${st.prob.toFixed(3)} (umbral ${S.threshold.toFixed(2)})`;
       const label = document.createElement("span");
       label.className = "mov-label";
       label.textContent = msg;

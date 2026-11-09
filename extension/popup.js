@@ -1,6 +1,6 @@
 const DEFAULTS = {
   enabled: true,
-  threshold: 0.28,
+  threshold: 0.5,
   mode: "blur",
   showAllScores: false,
   genericMode: true,

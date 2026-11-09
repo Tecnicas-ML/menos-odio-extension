@@ -10,7 +10,7 @@
     <img src="icons/icon32.png" alt="" width="24" height="24" />
     <div>
       <h1>Menos odio a la vista</h1>
-      <p class="sub">Modelo A3 · RoBERTuito</p>
+      <p class="sub">Modelo v5 multitarea · RoBERTuito</p>
     </div>
     <label class="switch" title="Activar / desactivar">
       <input type="checkbox" id="enabled" />
@@ -29,7 +29,7 @@
       <span>Umbral <b id="thrVal"></b></span>
       <input type="range" id="threshold" min="0.05" max="0.95" step="0.01" />
     </label>
-    <p class="hint">0,28 = umbral elegido en DEV (F1 odio test ≈ 0,653). Más alto → oculta menos.</p>
+    <p class="hint">0,50 = umbral de DEV_EVAL de cada cabeza del modelo v5 (insulto / odio grupal; puntaje reescalado, no es probabilidad). Más alto → oculta menos.</p>
 
     <label class="row">
       <span>Acción</span>
